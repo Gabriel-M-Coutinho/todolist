@@ -1,4 +1,4 @@
-import { Priority } from 'src/user/enums/PriorityEnum';
+
 import {
   BeforeInsert,
   Column,

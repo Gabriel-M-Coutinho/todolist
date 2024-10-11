@@ -27,6 +27,8 @@
     "@nestjs/typeorm": "^10.0.2",
     "@nestjsx/crud": "^5.0.0-alpha.3",
     "@nestjsx/crud-typeorm": "^5.0.0-alpha.3",
+    "pg": "^8.13.0",
+    "postgresql": "^0.0.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "swagger-ui-express": "^5.0.1",

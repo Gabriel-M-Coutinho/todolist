@@ -10,6 +10,7 @@ async function bootstrap() {
     .setTitle('API Clothing')
     .setDescription('Api ecomerce de loja de roupas')
     .setVersion('1.0')
+    .addBearerAuth() // Adiciona suporte para autenticação Bearer
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
