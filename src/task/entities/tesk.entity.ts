@@ -1,4 +1,3 @@
-
 import {
   BeforeInsert,
   Column,
@@ -8,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from 'src/user/entities/user.entity';
+
 @Entity('Task')
 export class TaskEntity {
   @PrimaryGeneratedColumn()

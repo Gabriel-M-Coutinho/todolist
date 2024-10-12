@@ -2,18 +2,28 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Controller, Post } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { LoginDto } from './entities/login.dto';
+import { AuthRequest } from './model/AuthRequests';
+import { AuthService } from './auth.service';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+  @Post('login')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(LocalAuthGuard)
+  async login(@Request() req: AuthRequest) {
+    return this.authService.login(req.user);
   }
 }

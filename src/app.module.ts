@@ -20,6 +20,8 @@ import { AuthModule } from './auth/auth.module';
       database: 'teste',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],
       synchronize: true,
+      dropSchema: true,
+      logging: true,
     }),
 
     TaskModule,
