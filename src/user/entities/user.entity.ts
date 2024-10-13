@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { TaskEntity } from 'src/task/entities/tesk.entity';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('User')
 export class UserEntity {
@@ -7,7 +14,11 @@ export class UserEntity {
   @Column()
   name: string;
   @Column()
+  @Index()
   email: string;
   @Column()
   password: string;
+
+  @OneToMany(() => TaskEntity, (task) => task.user, { cascade: true })
+  tasks: TaskEntity[];
 }

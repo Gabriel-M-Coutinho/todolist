@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { Module } from '@nestjs/common';
 
@@ -5,10 +6,10 @@ import { TaskModule } from './task/task.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     AuthModule,
     UserModule,
     TypeOrmModule.forRoot({

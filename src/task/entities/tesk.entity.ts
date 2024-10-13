@@ -2,6 +2,7 @@ import {
   BeforeInsert,
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -12,18 +13,23 @@ import { UserEntity } from 'src/user/entities/user.entity';
 export class TaskEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
+  @Index()
   title: string;
   @Column()
   description: string;
 
   @Column()
+  @Index()
   priority: Priority;
 
   @Column()
+  @Index()
   created_at: Date;
 
-  @Column()
+  @Column({ nullable: true })
+  @Index()
   finish_at: Date;
 
   @BeforeInsert()
@@ -31,7 +37,6 @@ export class TaskEntity {
     this.created_at = new Date();
   }
 
-  @ManyToOne(() => UserEntity)
-  @JoinColumn({ name: 'owner_id' })
-  owner: UserEntity;
+  @ManyToOne(() => UserEntity, (user) => user.tasks, { onDelete: 'CASCADE' })
+  user: UserEntity;
 }
