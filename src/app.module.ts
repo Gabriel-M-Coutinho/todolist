@@ -20,8 +20,8 @@ import { join } from 'path';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DB_NAME,
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],
-      //synchronize: true, sincroniza as operações, utilizar os migrations é mais seguro
-      //dropSchema: true, deleta a base
+      synchronize: true, 
+      dropSchema: true, 
       logging: true,
     }),
 
