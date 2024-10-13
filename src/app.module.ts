@@ -14,14 +14,14 @@ import { join } from 'path';
     UserModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '1238425wky22',
-      database: 'teste',
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DB_NAME,
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],
-      synchronize: true,
-      dropSchema: true,
+      //synchronize: true, sincroniza as operações, utilizar os migrations é mais seguro
+      //dropSchema: true, deleta a base
       logging: true,
     }),
 
