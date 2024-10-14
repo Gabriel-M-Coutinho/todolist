@@ -6,9 +6,15 @@ import { TaskModule } from './task/task.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { RedisModule } from '@nestjs-modules/ioredis';
+
 
 @Module({
   imports: [
+    RedisModule.forRoot({
+      type: 'single',
+      url: 'redis://localhost:6379',
+    }),
     AuthModule,
     AuthModule,
     UserModule,
